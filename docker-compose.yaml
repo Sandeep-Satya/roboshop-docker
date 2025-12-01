@@ -18,8 +18,7 @@ services:
     image: mysql:v1
     container_name: mysql
     volumes:
-    - mysql:/var/lib/mysql
-    
+    - mysql:/var/lib/mysql 
  rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq
@@ -70,3 +69,8 @@ networks:
     driver: bridge
     name: roboshop
     external: false 
+volumes:
+  mongodb:  
+  redis:
+  mysql:
+  rabbitmq:
