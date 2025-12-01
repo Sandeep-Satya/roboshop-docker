@@ -2,7 +2,7 @@ services:
  catalogue:
    image: catalogue:v1
    container_name: catalogue
-   dependencies:
+   depends_on:
      - mongodb
  mongodb:
     image: mongodb:v1
@@ -13,31 +13,31 @@ services:
  user:
    image: user:v1
    container_name: user
-   dependencies:
+   depends_on:
      - mongodb
      - redis
  cart:
    image: cart:v1
    container_name: cart
-   dependencies:
+   depends_on:
      - mongodb
      - redis  
  shipping:
     image: shipping:v1
     container_name: shipping
-    dependencies:
+    depends_on:
       - rabbitmq
  payment:
     image: payment:v1   
     container_name: payment
-    dependencies:
+    depends_on:
     - rabbitmq
     - cart
     - user
  frontend:
     image: frontend:v1
     container_name: frontend
-    dependencies:
+    depends_on:
         - user
         - catalogue
         - cart
