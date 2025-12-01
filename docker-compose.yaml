@@ -29,13 +29,14 @@ services:
    image: cart:v1
    container_name: cart
    depends_on:
-     - mongodb
      - redis  
+     - catalogue 
  shipping:
     image: shipping:v1
     container_name: shipping
     depends_on:
-      - rabbitmq
+      - mysql
+      - cart
  payment:
     image: payment:v1   
     container_name: payment
@@ -49,11 +50,11 @@ services:
     ports:
     - "80:80"
     depends_on:
-        - user
-        - catalogue
-        - cart
-        - shipping
-        - payment     
+    - catalogue
+    - user
+    - cart
+    - shipping
+    - payment     
 networks:
   default:
     driver: bridge
