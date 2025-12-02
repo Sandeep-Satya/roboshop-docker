@@ -79,8 +79,8 @@ services:
    mongodb:
        image: mongodb:v1
        container_name: mongodb
-       volumes:
-       - mongodb:/data/db
+      #  volumes:
+      #  - mongodb:/data/db
 networks:
   default:
     driver: bridge
